@@ -1,0 +1,26 @@
+========
+个人简介
+========
+
+:layout: page
+:status: hidden
+:authors: 潘晓亮
+:date: 2020-02-23
+:modified: 2020-11-27
+:slug: landing-page-about-hidden
+:category:
+:tags:
+:summary:
+
+.. contents::
+
+潘晓亮，江湖人称亮哥，计算机技术爱好者。
+
+- 邮箱：pxl@baihesoftware.com
+- 博客：https://panxiaoliang.github.io
+- 微博：\ `潘晓亮看山`_
+- 微信公众号：潘晓亮
+- 哔哩哔哩：\ `潘晓亮`_
+
+.. _潘晓亮看山: https://weibo.com/panxiaoliang1981
+.. _潘晓亮: https://space.bilibili.com/440228798

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="潘晓亮" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Ruby, Python, JavaScript, 部署工具, Computer Technology, " />
+
+<meta property="og:title" content="浅谈 Ruby、Python 和 JavaScript 的部署工具"/>
+<meta property="og:url" content="/posts/2020/04/talk-about-ruby-python-and-javascript-deployment-tools.html" />
+<meta property="og:description" content="" />
+<meta property="og:site_name" content="潘晓亮的博客" />
+<meta property="og:article:author" content="潘晓亮" />
+<meta property="og:article:published_time" content="2020-04-15T00:00:00+08:00" />
+<meta property="og:article:modified_time" content="2020-09-24T00:00:00+08:00" />
+<meta name="twitter:title" content="浅谈 Ruby、Python 和 JavaScript 的部署工具">
+<meta name="twitter:description" content="">
+
+        <title>浅谈 Ruby、Python 和 JavaScript 的部署工具 · 潘晓亮的博客
+</title>
+        <link rel="shortcut icon" href="/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-180x180.png" type="image/png" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="潘晓亮的博客 - Full Atom Feed" />
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/"><span class=site-name>潘晓亮的博客</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       "/"
+                                    >首页</a>
+                                </li>
+                                <li ><a href="/my-mother.html">我的妈妈</a></li>
+                                <li ><a href="/categories.html">分类</a></li>
+                                <li ><a href="/tags.html">标签</a></li>
+                                <li ><a href="/archives.html">归档</a></li>
+                                <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="/posts/2020/04/talk-about-ruby-python-and-javascript-deployment-tools.html">
+                浅谈 Ruby、Python 和 JavaScript&nbsp;的部署工具
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc" id="">
+<p class="topic-title">目录</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id2" id="id6">Ruby 篇</a></li>
+<li><a class="reference internal" href="#id4" id="id7">Python 篇</a></li>
+<li><a class="reference internal" href="#id5" id="id8">JavaScript 篇</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+            
+            
+<p>最近在研究 <a class="reference external" href="https://rubyonrails.org">Ruby on Rails</a> 和 <a class="reference external" href="https://www.djangoproject.com">Django</a> ，发现 Ruby on Rail 6 默认集成了
+<a class="reference external" href="https://nodejs.org">Node.js</a> 。Ruby on Rails、Django 和 Node.js 分别是用 <a class="reference external" href="https://www.ruby-lang.org">Ruby</a>, <a class="reference external" href="https://www.python.org">Python</a> 和
+<a class="reference external" href="https://zh.wikipedia.org/wiki/JavaScript">JavaScript</a> 写的，这三种编程语言都有自己的部署工具，而且每个编程语言都有不只一
+个部署工具，并且部署工具之间的关系错综复杂。为此我在研究如何使用这些部署工具上
+花了不少工夫。其实我是先学习的 Python，所以是先研究的 Django。但是为什么把 Ruby
+和 Ruby on Rails 放在前面讲呢？因为我觉得 Ruby 的部署工具是这三种编程语言中做得
+最好的。下面我就来分享下我对这三种编程语言部署工具的认识。为了更清晰的阐述这三 种编程语言的各个部署工具的作用和它们之间的关系，我们先来看一些概念：</p>
+<ul class="simple">
+<li><strong>操作系统的软件包管理器：</strong> 操作系统上的软件包管理工具，用于管理操作系统上的
+应用软件包。像 Ruby 和 Python 这样的动态编程语言的解释器其实也是一种应用软件
+，所以操作系统的软件包管理器也可以用于安装、删除 Ruby 和 Python 的某个或多个 版本的解释器。</li>
+<li><strong>编程语言的版本管理器：</strong> 用于管理编程语言解释器各版本运行环境的增强工具。虽
+然操作系统的软件包管理器可以用于安装、删除编程语言的某个或多个版本的解释器，
+但是想在各版本运行环境中进行切换需要执行复杂繁琐的 shell 命令。借助编程语言的 版本管理器可以很轻松的安装、删除、切换多个版本的运行环境。</li>
+<li><strong>编程语言的包管理器：</strong> 编程语言的运行环境中附带的包管理工具，用于管理编程语 言相关的软件包。</li>
+<li><strong>编程语言的包依赖关系管理器：</strong> 编程语言的包管理器的增强工具。在编程语言的包 管理器的基础上，针对包依赖关系管理方面的功能进行了加强与扩展。</li>
+</ul>
+<p>这些概念都是我自己定义的，看完了是不是有一知半解的感觉？而且还是不知道在什么时
+候该用哪个部署工具？的确，上面概念中的各种管理器之间的功能和应用场景的边界很模 糊。其实你只需要记住：</p>
+<p>「操作系统的软件包管理器」是用来安装「编程语言的版本管理器」用的，「编程语言的
+版本管理器」是用来安装各版本编程语言的运行环境用的；用「编程语言的包管理器」安
+装「编程语言的包依赖关系管理器」，用「编程语言的包依赖关系管理器」借助「编程语 言的包管理器」管理编程语言的相关软件包。</p>
+<p>这个规则就可以了。是不是觉得很绕口？在 macOS 下以 Ruby 为例就是：</p>
+<p><a class="reference external" href="https://brew.sh">Homebrew</a> 是用来安装 <a class="reference external" href="https://github.com/rbenv/rbenv">rbenv</a> 用的，rbenv 是用来安装各版本 Ruby 的运行环境用的；
+用 <a class="reference external" href="https://rubygems.org">RubyGems</a> 安装 <a class="reference external" href="https://bundler.io">Bundler</a> ，用 Bundler 借助 RubyGems 管理 Ruby 的相关软件包。</p>
+<p>其实 Ruby、Python 和 JavaScript 这三种编程语言都有着自己的设计哲学，所以相关的 部署工具在实现细节上都有些差异。接下来我再具体说说这三种编程语言的部署工具。</p>
+<p>先说下我的运行环境， <strong>我的操作系统是 macOS Catalina 10.15.4，操作系统的软件包
+管理器是 Homebrew。</strong></p>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">Ruby 篇</a></h2>
+<p>Ruby 有两个比较著名的版本管理器，分别是 <a class="reference external" href="https://rvm.io"><span class="caps">RVM</span></a> 和 rbenv。其中 <span class="caps">RVM</span> 是大而全的设计
+，而 rbenv 是小而美的设计。</p>
+<p><span class="caps">RVM</span> 是一个机制完善并且功能强大的 Ruby 版本管理器。<span class="caps">RVM</span> 除了 Ruby 版本管理器功能
+外，还通过 gemsets 对 Ruby 的包管理功能进行了增强。就是说 <span class="caps">RVM</span> 可以用于安装、删
+除、切换多个独立的 Ruby 运行环境，并且可以对各个环境下的 Ruby 包进行管理。</p>
+<p>按理来说 <span class="caps">RVM</span> 的功能已经非常强大了，我们应该别无他求了。为什么还会有人开发出来了
+其他的 Ruby 版本管理器呢？<span class="caps">RVM</span> 功能强大带来的副作用就是设置起来相对复杂，而且
+<span class="caps">RVM</span> 会改动 shell 命令。于是就有人为了解决 <span class="caps">RVM</span> 的这些问题而开发出来了 rbenv。</p>
+<p>rbenv 是一个小而美，够用就好的 Ruby 版本管理器。rbenv 遵循只做一件事并且做好的
+Unix 设计哲学，它的功能只专注于 Ruby 版本管理。rbenv 安装 Ruby 的功能是通过一个
+叫 <a class="reference external" href="https://github.com/rbenv/ruby-build">ruby-build</a> 的插件实现的，本身没有管理 Ruby 包依赖关系的功能的，而是推荐使用
+Bundler 来作为 Ruby 的包依赖关系管理器。rbenv 的官方文档里有一篇文章
+《 <a class="reference external" href="https://github.com/rbenv/rbenv/wiki/Why-rbenv%3F">Why choose rbenv over <span class="caps">RVM</span>?</a> 》解释了它和 <span class="caps">RVM</span> 的区别。</p>
+<p>就我个人来说，我更喜欢 rbenv。可以说 rbenv 简单够用，在 Ruby 版本管理方面的功能
+比 <span class="caps">RVM</span> 好，在使用 Bundler 作为 Ruby 的包依赖关系管理器后完全就不需要 <span class="caps">RVM</span> 的
+gemsets 功能了。</p>
+<p>说完 Ruby 的版本管理器我们再来看看 Ruby 的包管理器——RubyGems。</p>
+<blockquote>
+RubyGems 是 Ruby 的一个包管理器，提供了分发 Ruby 程序和库的标准格式“gem”，
+旨在方便地管理 gem 安装的工具，以及用于分发 gem 的服务器。RubyGems 大约创建
+于2003年11月，从 Ruby 1.9 版起成为 Ruby 标准库的一部分。</blockquote>
+<p>上面这段话摘自 <a class="reference external" href="https://zh.wikipedia.org/wiki/RubyGems">维基百科的 RubyGems 介绍</a> 。</p>
+<p>Ruby 的包依赖关系管理器叫做 Bundler，这个前文已经有所提及。Bundler 主要用来管理
+RubyGems 的依赖关系。一般情况下，一个 Ruby 项目会使用多个 gem，而各个 gem 都有
+自己的依赖包，这些 gem 的依赖包又会交叉重叠，并且会有多个 gem 依赖同一个包的不
+同版本的情况。Ruby 的做法是同一个版本的运行环境下可以同时安装一个 gem 的多个版
+本，然后通过 Bundler 来管理这些 gem 的依赖关系。Bundler 先用 Gemfile 记录项目中
+都使用了哪些 gem，然后计算出不同 gem 的依赖关系并生成 Gemfile.lock 记录确切的
+gem 名称和版本号以及它们所依赖的 gem 的名称和版本号。当第一次运行
+<tt class="docutils literal">bundle install</tt> 时，Bundler 会根据 Gemfile 自动生成 Gemfile.lock。以后每次运
+行 <tt class="docutils literal">bundle install</tt> 时，如果 Gemfile 中的条目不变 Bundler 就不会再次计算 gem
+依赖版本号，直接根据 Gemfile.lock 检查和安装 gem。如果出现依赖冲突时可以通过
+<tt class="docutils literal">bundle update</tt> 更新 Gemfile.lock。</p>
+<p>接下来我以创建一个 Ruby on Rails 项目为例来说明如何使用 rbenv、RubyGems 和 Bundler。</p>
+<ol class="arabic">
+<li><p class="first">使用 Homebrew 安装 rbenv：</p>
+<div class="highlight"><pre><span></span>$ brew install rbenv
+</pre></div>
+<p>执行上面的命令后会同时安装 rbenv 的 ruby-build 插件。然后：</p>
+<div class="highlight"><pre><span></span>$ rbenv init
+</pre></div>
+<p>根据提示设置 rbenv 的 shell 集成，设置完成后关闭并重新打开终端。</p>
+</li>
+<li><p class="first">使用 rbenv 安装 Ruby：</p>
+<div class="highlight"><pre><span></span>$ rbenv install --list
+</pre></div>
+<p>查看有哪些可安装的 Ruby 版本，比如要安装 Ruby 2.6.6：</p>
+<div class="highlight"><pre><span></span>$ rbenv install <span class="m">2</span>.6.6
+</pre></div>
+<p>安装完成后将 Ruby 的本地版本切换到2.6.6：</p>
+<div class="highlight"><pre><span></span>$ rbenv <span class="nb">local</span> <span class="m">2</span>.6.6
+</pre></div>
+</li>
+<li><p class="first">使用 RubyGems 安装 Bundler：</p>
+<div class="highlight"><pre><span></span>$ gem install bundler
+</pre></div>
+</li>
+<li><p class="first">使用 RubyGems 安装 Ruby on Rails：</p>
+<div class="highlight"><pre><span></span>$ gem install rails
+</pre></div>
+</li>
+<li><p class="first">创建一个 Ruby on Rails 项目：</p>
+<div class="highlight"><pre><span></span>$ rails new railsporject
+</pre></div>
+<p>上面命令中的 <tt class="docutils literal">railsproject</tt> 是项目名，可以改成你想起的名字。另外目前最新版
+的 Ruby on Rails 6.0.2.2 的安装脚本集成了 Node.js，所以创建项目前需要安装
+Node.js。如何安装 Node.js 请看本文的 JavaScript 篇。</p>
+</li>
+<li><p class="first">启动刚刚创建的 Ruby on Rails 项目服务器：</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> railsproject
+$ bundle <span class="nb">exec</span> rails server
+</pre></div>
+<p>打开浏览器在地址栏中输入 <tt class="docutils literal"><span class="pre">http://localhost:3000</span></tt>，出现「Yay! You’re on Rails!」页面，说明项目创建并启动成功。</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id7">Python 篇</a></h2>
+<p>Python 的主流部署工具是 <a class="reference external" href="https://virtualenv.pypa.io">Virtualenv</a> ，包管理器是 <a class="reference external" href="https://pip.pypa.io">pip</a> 。和 Ruby 的部署工具设计
+理念不同，Virtualenv 以项目为单位创建完全独立的 Python 运行环境。Virtualenv 本
+身是一个 Python 的软件包，所以需要先安装 Python 后再通过 pip 安装 Virtualenv。
+Virtualenv 不能用于安装 Python 解释器，只能在操作系统已经安装的各个 Python 解释
+器版本下创建运行环境。Python 的包管理器 pip 除了用来安装包之外还可以管理包依赖
+关系，pip 通过 requirements.txt 来记录项目的依赖包列表，然后再结合 Virtualenv 实现完整的项目运行环境管理功能。</p>
+<p>有很长一段时间我都是用 Homebrew 安装 Python，然后再用 pip 结合 Virtualenv 的方
+式来管理 Pyhton 的运行环境。后来接触到 Ruby，我觉得 Ruby 的部署工具的管理方式更
+好些。我便开始寻找 Python 有没有接近 Ruby 的管理方式的部署工具，于是我找到了
+<a class="reference external" href="https://github.com/pyenv/pyenv">pyenv</a> 和 <a class="reference external" href="https://pipenv.pypa.io">Pipenv</a> 。pyenv 是 Python 的版本管理器，功能和设计理念完全照搬了
+rbenv。Pipenv 的功能类似 Bundler，但是结合 Virtualenv 做出了 Python 自有的特色
+。有了 pyenv 和 Pipenv 以后就意味着我可以按照 Ruby 的方式部署 Python 的运行环境 了。</p>
+<p>接下来我以创建一个 Django 项目为例来说明如何使用 pyenv、pip、Virtualenv 和 Pipenv。</p>
+<ol class="arabic">
+<li><p class="first">使用 Homebrew 安装 pyenv：</p>
+<div class="highlight"><pre><span></span>$ brew install pyenv
+</pre></div>
+<p>然后：</p>
+<div class="highlight"><pre><span></span>$ pyenv init
+</pre></div>
+<p>根据提示设置 pyenv 的 shell 集成，设置完成后关闭并重新打开终端。</p>
+</li>
+<li><p class="first">使用 pyenv 安装 Python：</p>
+<div class="highlight"><pre><span></span>$ pyenv install --list
+</pre></div>
+<p>查看有哪些可安装的 Python 版本，比如要安装 Python 3.8.2：</p>
+<div class="highlight"><pre><span></span>$ pyenv install <span class="m">3</span>.8.2
+</pre></div>
+<p>安装完成后将 Python 的本地版本切换到3.8.2：</p>
+<div class="highlight"><pre><span></span>$ pyenv <span class="nb">local</span> <span class="m">3</span>.8.2
+</pre></div>
+</li>
+<li><p class="first">使用 pip 安装 Virtualenv：</p>
+<div class="highlight"><pre><span></span>$ pip install virtualenv
+</pre></div>
+</li>
+<li><p class="first">使用 pip 安装 Pipenv：</p>
+<div class="highlight"><pre><span></span>$ pip install pipenv
+</pre></div>
+</li>
+<li><p class="first">使用 pip 安装 Django：</p>
+<div class="highlight"><pre><span></span>$ pip install Django
+</pre></div>
+</li>
+<li><p class="first">创建一个 Django 项目：</p>
+<div class="highlight"><pre><span></span>$ django-admin startproject djangoproject
+</pre></div>
+<p>上面命令中的 <tt class="docutils literal">djangoproject</tt> 是项目名，可以改成你想起的名字。</p>
+</li>
+<li><p class="first">在刚刚创建的 Django 项目中初始化 Pipenv：</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> djangoproject
+$ pipenv install Django
+</pre></div>
+<p>上面的命令会创建一个与 <tt class="docutils literal">djangoproject</tt> 相关联的 Virtualenv 实例并且在其中
+安装 Django，然后再生成 Pipfile 和 Pipfile.lock 文件记录项目的依赖包。命令执 行完成后关闭并重新打开终端。</p>
+</li>
+<li><p class="first">启动刚刚创建的 Django 项目服务器：</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> djangoproject
+$ pipenv run python manage.py runserver
+</pre></div>
+<p>打开浏览器在地址栏中输入 <tt class="docutils literal"><span class="pre">http://localhost:8000</span></tt> ，出现「The install
+worked successfully! Congratulations!」页面，说明项目创建并启动成功。</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id8">JavaScript 篇</a></h2>
+<p>JavaScript 是因为 Node.js 的兴起才开始逐渐出现了完善的部署工具。JavaScript 的
+部署工具受 Ruby 的影响较大，有对标 <span class="caps">RVM</span> 的 <a class="reference external" href="https://github.com/nvm-sh/nvm">nvm</a> 、对标 rbenv 的 <a class="reference external" href="https://github.com/nodenv/nodenv">nodenv</a> 、对标
+RubyGems 的 <a class="reference external" href="https://www.npmjs.com">npm</a> 、对标 Bundler 的 <a class="reference external" href="https://yarnpkg.com">Yarn</a> 。因为在 Ruby 篇我已经讲过了更喜欢
+rbenv，所以我在 JavaScript 中就选择了 nodenv 作为版本管理器。</p>
+<p>接下来我以创建一个 <a class="reference external" href="https://expressjs.com">Express.js</a> 项目为例来说明如何使用 nodenv、npm 和 Yarn。</p>
+<ol class="arabic">
+<li><p class="first">使用 Homebrew 安装 nodenv：</p>
+<div class="highlight"><pre><span></span>$ brew install nodenv
+</pre></div>
+<p>执行上面的命令后会同时安装 nodenv 的 <a class="reference external" href="https://github.com/nodenv/node-build">node-build</a> 插件。然后：</p>
+<div class="highlight"><pre><span></span>$ nodenv init
+</pre></div>
+<p>根据提示设置 nodenv 的 shell 集成，设置完成后关闭并重新打开终端。</p>
+</li>
+<li><p class="first">使用 nodenv 安装 Node.js：</p>
+<div class="highlight"><pre><span></span>$ nodenv install --list
+</pre></div>
+<p>查看有哪些可安装的 Node.js 版本，比如要安装 Node.js 12.16.2：</p>
+<div class="highlight"><pre><span></span>$ nodenv install <span class="m">12</span>.16.2
+</pre></div>
+<p>安装完成后将 Node.js 的本地版本切换到12.16.2：</p>
+<div class="highlight"><pre><span></span>$ nodenv <span class="nb">local</span> <span class="m">12</span>.16.2
+</pre></div>
+</li>
+<li><p class="first">使用 npm 安装 Yarn：</p>
+<div class="highlight"><pre><span></span>$ npm install -g yarn
+</pre></div>
+<p>关闭并重新打开终端。</p>
+<p><em>（完成本步骤以后就具备了 Ruby on Rails 6.0.2.2 的安装脚本要求的 Node.js 基本运行环境。）</em></p>
+</li>
+<li><p class="first">创建一个 Express.js 项目：</p>
+<div class="highlight"><pre><span></span>$ mkdir expressjsproject
+$ <span class="nb">cd</span> expressjsproject
+$ yarn init
+</pre></div>
+<p>上面命令中的 <tt class="docutils literal">expressjsproject</tt> 是项目名，可以改成你想起的名字。执行完
+<tt class="docutils literal">yarn init</tt> 命令以后会提示输入一系列内容，比如程序名称、版本号、主文件名等
+，根据实际情况填写相关内容即可。因为我这里创建的只是一个演示项目，所以一路回 车按照默认内容创建项目。</p>
+<p>然后在当前项目中安装 Express.js：</p>
+<div class="highlight"><pre><span></span>$ yarn add express
+</pre></div>
+</li>
+<li><p class="first">创建 Express.js 项目的 <tt class="docutils literal">hello, world</tt> ，在项目目录中创建一个名为
+<tt class="docutils literal">index.js</tt> 的文件，然后添加以下代码：</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'hello, world'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Example app listening on port 3000!'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</li>
+<li><p class="first">启动刚刚创建的 Express.js 项目服务器：</p>
+<div class="highlight"><pre><span></span>$ node index.js
+</pre></div>
+<p>打开浏览器在地址栏中输入 <tt class="docutils literal"><span class="pre">http://localhost:3000</span></tt> ，出现「hello, world」页 面，说明项目创建并启动成功。</p>
+</li>
+</ol>
+</div>
+
+
+
+            
+
+            
+                <hr />
+    <div class="author-blurb">
+        <a href="https://panxiaoliang.github.io" target="_blank" rel="nofollow noopener noreferrer">
+            <span class="author-name">潘晓亮</span>
+        </a>
+        江湖人称亮哥，计算机技术爱好者。
+    </div>
+
+            
+
+
+
+
+
+
+
+            <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/posts/2020/04/move-blog-from-pelican-to-jekyll.html" title="Previous: 将博客从 Pelican 迁移到 Jekyll">将博客从 Pelican 迁移到 Jekyll</a></li>
+                <li class="next-article"><a href="/posts/2020/05/move-blog-back-to-pelican.html" title="Next: 将博客迁回到 Pelican">将博客迁回到 Pelican</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>发布日期</h4>
+            <time itemprop="dateCreated" datetime="2020-04-15T00:00:00+08:00">2020-04-15</time>
+<h4>更新日期</h4>
+<time datetime="2020-09-24T00:00:00+08:00">2020-09-24</time>
+
+            <h4>分类</h4>
+            <a class="category-link" href="/categories.html#computer-technology-ref">Computer Technology</a>
+            <h4>标签</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#bu-shu-gong-ju-ref">部署工具
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags.html#javascript-ref">JavaScript
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags.html#python-ref">Python
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags.html#ruby-ref">Ruby
+                    <span class="superscript">1</span>
+</a></li>
+            </ul>
+<h4>Stay in Touch</h4>
+<div id="sidebar-social-link">
+    <a href="/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
+    </a>
+    <a href="mailto:pxl@baihesoftware.com" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Mail" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#328cff"/><path d="m250 186c-46 0-69 35-69 74 0 44 29 72 68 72 43 0 73-32 73-75 0-44-34-71-72-71zm-1-37c30 0 57 13 77 33 0-22 35-22 35 1v150c-1 10 10 16 16 9 25-25 54-128-14-187-64-56-149-47-195-15-48 33-79 107-49 175 33 76 126 99 182 76 28-12 41 26 12 39-45 19-168 17-225-82-38-68-36-185 67-248 78-46 182-33 244 32 66 69 62 197-2 246-28 23-71 1-71-32v-11c-20 20-47 32-77 32-57 0-108-51-108-108 0-58 51-110 108-110" fill="#fff"/></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+    <div>
+        Pan Xiaoliang's Blog is licensed under the
+    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        Creative Commons Attribution 4.0 International License
+    </a>.
+    
+    </div>
+
+
+
+
+    <div id="fpowered">
+        Powered by <a href="http://getpelican.com" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>.
+        Theme: <a href="https://github.com/Pelican-Elegant/elegant" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>.
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>

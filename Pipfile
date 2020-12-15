@@ -1,0 +1,37 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+beautifulsoup4 = "==4.8.2"
+blinker = "==1.4"
+cssmin = "==0.2.0"
+ddt = "==1.2.2"
+docutils = "==0.16"
+feedgenerator = "==1.9"
+gitdb2 = "==2.0.6"
+gitpython = "==3.0.5"
+invoke = "==1.4.0"
+jinja2 = "==2.11.0"
+jinjaninja = "==0.1.2"
+livereload = "==2.6.1"
+markdown = "==3.1.1"
+markupsafe = "==1.1.1"
+pelican = "==4.2.0"
+pygments = "==2.5.2"
+python-dateutil = "==2.8.1"
+pytz = "==2019.3"
+six = "==1.14.0"
+smartypants = "==2.0.1"
+smmap2 = "==2.0.5"
+soupsieve = "==1.9.5"
+tornado = "==6.0.3"
+typogrify = "==2.0.7"
+unidecode = "==1.1.1"
+webassets = "==2.0"
+
+[requires]
+python_version = "3.8"

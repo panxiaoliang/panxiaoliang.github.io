@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="潘晓亮" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="GitHub, GitHub Pages, Pelican, 建站, Computer Technology, " />
+
+<meta property="og:title" content="用 GitHub Pages 和 Pelican 建站"/>
+<meta property="og:url" content="/posts/2019/07/creating-a-website-with-github-pages-and-pelican.html" />
+<meta property="og:description" content="" />
+<meta property="og:site_name" content="潘晓亮的博客" />
+<meta property="og:article:author" content="潘晓亮" />
+<meta property="og:article:published_time" content="2019-07-09T00:00:00+08:00" />
+<meta property="og:article:modified_time" content="2020-09-24T00:00:00+08:00" />
+<meta name="twitter:title" content="用 GitHub Pages 和 Pelican 建站">
+<meta name="twitter:description" content="">
+
+        <title>用 GitHub Pages 和 Pelican 建站 · 潘晓亮的博客
+</title>
+        <link rel="shortcut icon" href="/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-180x180.png" type="image/png" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="潘晓亮的博客 - Full Atom Feed" />
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/"><span class=site-name>潘晓亮的博客</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       "/"
+                                    >首页</a>
+                                </li>
+                                <li ><a href="/my-mother.html">我的妈妈</a></li>
+                                <li ><a href="/categories.html">分类</a></li>
+                                <li ><a href="/tags.html">标签</a></li>
+                                <li ><a href="/archives.html">归档</a></li>
+                                <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="/posts/2019/07/creating-a-website-with-github-pages-and-pelican.html">
+                用 GitHub Pages 和 Pelican&nbsp;建站
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <p>作为一个喜欢偶尔写写文章的计算机技术爱好者，用 <a class="reference external" href="https://pages.github.com">GitHub Pages</a> 和 <a class="reference external" href="http://getpelican.com">Pelican</a> 建站
+发表文章是我最喜欢的一种方式。今天我就把这种方式介绍给你，下面我来简单的讲解下
+如何用 GitHub Pages 和 Pelican&nbsp;建站。</p>
+<p>用 GitHub Pages 和 Pelican 建站需要具备使用 <a class="reference external" href="https://github.com">GitHub</a> 和搭建 <a class="reference external" href="https://virtualenv.pypa.io">Python 虚拟环境</a>
+的相关知识。如果你还不熟悉这些知识，那么需要你先学习一下 <a class="reference external" href="https://git-scm.com/book/zh">Pro Git</a> 和
+<a class="reference external" href="https://tutorial.djangogirls.org/zh/">Django Girls 教程</a>&nbsp;。</p>
+<p>下面是用 GitHub Pages 和 Pelican&nbsp;建站的操作步骤：</p>
+<ol class="arabic simple">
+<li>注册一个 GitHub 账号，然后在 GitHub 上创建一个名称为 <tt class="docutils literal"><span class="pre">&lt;user&gt;.github.io</span></tt> 的
+公开代码仓库。在创建代码仓库时需要选择用于 <a class="reference external" href="https://www.python.org">Python</a> 的 <tt class="docutils literal">.gitignore</tt> ，并且
+选择一个 <a class="reference external" href="https://www.gnu.org/licenses/license-list.html">自由软件许可证</a>&nbsp;。</li>
+<li>安装最新版本的 <a class="reference external" href="https://git-scm.com">Git</a>, <a class="reference external" href="https://www.python.org">Python</a> 和 <a class="reference external" href="https://virtualenv.pypa.io">Virtualenv</a></li>
+<li>将 <tt class="docutils literal"><span class="pre">&lt;user&gt;.github.io</span></tt> 克隆到本地</li>
+<li>创建 Pelican 的 Python&nbsp;虚拟环境</li>
+<li>安装最新版本的&nbsp;Pelican</li>
+<li>在本地 <tt class="docutils literal"><span class="pre">&lt;user&gt;.github.io</span></tt> 的根目录下创建 Pelican 实例，然后修改
+<tt class="docutils literal">pelicanconf.py</tt> 中的 <tt class="docutils literal">OUTPUT_PATH</tt> 值为 <tt class="docutils literal">docs</tt> 。</li>
+<li>安装 Pelican <a class="reference external" href="https://github.com/getpelican/pelican-themes">主题</a> 和 <a class="reference external" href="https://github.com/getpelican/pelican-plugins">插件</a></li>
+<li>在本地 <tt class="docutils literal"><span class="pre">&lt;user&gt;.github.io</span></tt> 的 <tt class="docutils literal">content</tt> 目录下创建后缀名为 <tt class="docutils literal">.rst</tt> 的纯
+文本文件，然后用 <a class="reference external" href="http://docutils.sourceforge.io/rst.html">reStructuredText</a>&nbsp;语法撰写文章。</li>
+<li>在本地 <tt class="docutils literal"><span class="pre">&lt;user&gt;.github.io</span></tt> 的根目录下使用 <tt class="docutils literal">pelican</tt> 命令将文章输出为网页
+文件存储到 <tt class="docutils literal">docs</tt> 目录</li>
+<li>使用 Git 命令将本地 <tt class="docutils literal"><span class="pre">&lt;user&gt;.github.io</span></tt> push 到&nbsp;GitHub</li>
+<li>在 GitHub 的 <tt class="docutils literal"><span class="pre">&lt;user&gt;.github.io</span></tt> 的 <tt class="docutils literal">Settings</tt> 找到 <tt class="docutils literal">GitHub Pages</tt> 选
+项，将 <tt class="docutils literal">Branch</tt> 选择为 <tt class="docutils literal">master</tt> ，将 <tt class="docutils literal">Floder</tt> 选择为 <tt class="docutils literal">/docs</tt> ，再点
+击 <tt class="docutils literal">Save</tt> 按钮。然后再勾选 <tt class="docutils literal">Enforce <span class="caps">HTTPS</span></tt> 。</li>
+<li>如果以后想要发表新文章，重复步骤8-10即可。</li>
+</ol>
+<p>以上的操作步骤是我用 GitHub Pages 和 Pelican 建站的一个简单的笔记。如果你看不太
+明白，建议你阅读这篇 <a class="reference external" href="https://rsip22.github.io/blog/create-a-blog-with-pelican-and-github-pages.html">Creating a blog with Pelican and GitHub Pages</a> ，译文叫
+做 <a class="reference external" href="https://linux.cn/article-9445-1.html">使用 Pelican 和 GitHub Pages 来搭建博客</a>&nbsp;。</p>
+<p>最后推荐一个 Pelican 主题和一些相关的 Pelican 插件，这个主题叫做 <a class="reference external" href="https://github.com/Pelican-Elegant/elegant">Elegant</a> ，与
+其相关的 Pelican&nbsp;插件有：</p>
+<div class="highlight"><pre><span></span>sitemap
+extract_toc
+tipue_search
+neighbors
+assets
+</pre></div>
+<p>可以在 <a class="reference external" href="https://github.com/getpelican/pelican-plugins">Pelican 插件的 GitHub 代码仓库</a>&nbsp;中获取以上插件。</p>
+
+
+
+            
+
+            
+                <hr />
+    <div class="author-blurb">
+        <a href="https://panxiaoliang.github.io" target="_blank" rel="nofollow noopener noreferrer">
+            <span class="author-name">潘晓亮</span>
+        </a>
+        江湖人称亮哥，计算机技术爱好者。
+    </div>
+
+            
+
+
+
+
+
+
+
+            <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/posts/2019/05/how-to-manage-computer-files-efficiently.html" title="Previous: 如何高效的管理计算机文件">如何高效的管理计算机文件</a></li>
+                <li class="next-article"><a href="/posts/2019/12/talk-about-erp-efficiency-problem.html" title="Next: 浅谈 ERP 是否能够帮助企业提升运作效率">浅谈 ERP 是否能够帮助企业提升运作效率</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>发布日期</h4>
+            <time itemprop="dateCreated" datetime="2019-07-09T00:00:00+08:00">2019-07-09</time>
+<h4>更新日期</h4>
+<time datetime="2020-09-24T00:00:00+08:00">2020-09-24</time>
+
+            <h4>分类</h4>
+            <a class="category-link" href="/categories.html#computer-technology-ref">Computer Technology</a>
+            <h4>标签</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#github-ref">GitHub
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags.html#github-pages-ref">GitHub Pages
+                    <span class="superscript">2</span>
+</a></li>
+                <li><a href="/tags.html#jian-zhan-ref">建站
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags.html#pelican-ref">Pelican
+                    <span class="superscript">3</span>
+</a></li>
+            </ul>
+<h4>Stay in Touch</h4>
+<div id="sidebar-social-link">
+    <a href="/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
+    </a>
+    <a href="mailto:pxl@baihesoftware.com" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Mail" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#328cff"/><path d="m250 186c-46 0-69 35-69 74 0 44 29 72 68 72 43 0 73-32 73-75 0-44-34-71-72-71zm-1-37c30 0 57 13 77 33 0-22 35-22 35 1v150c-1 10 10 16 16 9 25-25 54-128-14-187-64-56-149-47-195-15-48 33-79 107-49 175 33 76 126 99 182 76 28-12 41 26 12 39-45 19-168 17-225-82-38-68-36-185 67-248 78-46 182-33 244 32 66 69 62 197-2 246-28 23-71 1-71-32v-11c-20 20-47 32-77 32-57 0-108-51-108-108 0-58 51-110 108-110" fill="#fff"/></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+    <div>
+        Pan Xiaoliang's Blog is licensed under the
+    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        Creative Commons Attribution 4.0 International License
+    </a>.
+    
+    </div>
+
+
+
+
+    <div id="fpowered">
+        Powered by <a href="http://getpelican.com" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>.
+        Theme: <a href="https://github.com/Pelican-Elegant/elegant" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>.
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>
