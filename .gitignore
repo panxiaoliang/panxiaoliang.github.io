@@ -128,3 +128,17 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Hexo files
+db.json
+public/
+.deploy*/
+_multiconfig.yml%
+
+# Windows files
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# macOS files
+.DS_Store
