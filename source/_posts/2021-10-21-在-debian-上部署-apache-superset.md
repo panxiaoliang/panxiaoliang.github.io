@@ -262,7 +262,7 @@ MariaDB 的默认安装是不安全的。我们可以用 MariaDB 附带的 `mysq
 
    查看 root 用户使用哪个插件登录：
 
-   ``sql
+   ```sql
    SELECT User, Host, plugin FROM user;
    ```
 
