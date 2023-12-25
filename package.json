@@ -22,11 +22,11 @@
     "hexo-generator-tag": "^2.0.0",
     "hexo-related-posts": "^1.5.1",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-marked": "^6.2.0",
     "hexo-renderer-stylus": "^2.1.0",
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
-    "hexo-theme-next": "^8.16.0",
+    "hexo-theme-next": "^8.19.1",
     "hexo-word-counter": "^0.1.0"
   },
   "devDependencies": {
